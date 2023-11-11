@@ -29,7 +29,8 @@ sudo apt install -y ripgrep
 sudo apt install yarn -y
 sudo apt install openvpn -y
 sudo apt install nmap -y
-sudo apt install wireshark -y
+echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 sudo apt install tor -y
 sudo apt install proxychains -y
 
