@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MarkdownSettings">
+    <option name="customStylesheetText" value="@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap');&#10;@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,400;1,500;1,600;1,700&amp;display=swap');&#10;&#10;body {&#10;    font-family: 'Roboto', sans-serif;&#10;    font-size: 90% !important;&#10;}&#10;&#10;code, pre, .monospace-text {&#10;    font-family: 'JetBrains Mono', monospace;&#10;}&#10;" />
+    <option name="useCustomStylesheetText" value="true" />
+  </component>
+</project>
