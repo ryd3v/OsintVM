@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 
-gsettings set org.gnome.shell.ubuntu color-scheme prefer-dark
 # Remove unnecessary packages
 sudo apt purge -y apport apport-symptoms popularity-contest ubuntu-report whoopsie
 sudo apt autoremove -y
 
 # Update and install basic tools
 sudo apt update
-sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses5-dev libffi-dev
+sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses5-dev libffi-dev open-vm-tools
 
 # Install and configure specific tools
 sudo snap remove --purge firefox
 sudo add-apt-repository -y ppa:mozillateam/ppa
-echo 'Package: * Pin: release o=LP-PPA-mozillateam Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/mozilla-firefox
-sudo apt install firefox
+echo '
+Package: *
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
+' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+sudo apt install -y firefox
 sudo snap install chromium
 sudo pip install -U youtube-dl yt-dlp
 sudo apt install -y mediainfo-gui
@@ -179,6 +182,7 @@ wget https://github.com/mozilla/geckodriver/releases/download/v0.32.0/geckodrive
 tar -xvzf geckodriver*
 chmod +x geckodriver
 sudo mv geckodriver /usr/local/bin
+sudo rm -rf geckodriver-v0.32.0-linux-aarch64.tar.gz
 
 # Amass installation
 sudo snap install amass
@@ -352,13 +356,21 @@ source name-that-hashEnvironment/bin/activate
 sudo pip install -U name-that-hash 2>/dev/null
 deactivate
 
+# Detect it easy
+mkdir /opt/Tools/DIE
+cd /opt/Tools/DIE
+wget https://github.com/horsicq/DIE-engine/releases/download/3.08/Detect_It_Easy-3.08-x86_64.AppImage
+
 cd /opt/tools
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 ./msfconsole
 cd /opt/Tools
+sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
+sudo apt update -y
 
 wget https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.5.0.deb
-sudo dpkg -i Maltego.v4.5.0.deb -y
+sudo apt install ./Maltego.v4.5.0.deb -y
+sudo rm -rf Maltego.v4.5.0.deb
 
 cd /opt/Tools
 sudo apt -y install \
@@ -371,9 +383,14 @@ sudo apt -y install \
         gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x \
         gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 
-wget https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.12.1/sleuthkit-java_4.12.1-1_amd64.deb
-sudo dpkg -i sleuthkit-java_4.12.1-1_amd64.deb -y
+# Autopsy
+cd /opt/Tools
+sudo wget https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.21.0/autopsy_4.21.0_amd64.snap
+sudo snap install --dangerous ./autopsy_4.21.0_amd64.snap
+sudo rm -rf autopsy_4.21.0_amd64.snap
 
+# Common Forensics Tools
+sudo apt install forensics-all -y
 
 # Miscellaneous setup
 sudo apt --fix-broken install
