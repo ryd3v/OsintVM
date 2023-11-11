@@ -387,6 +387,7 @@ sudo apt -y install \
 cd /opt/Tools
 sudo wget https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.21.0/autopsy_4.21.0_amd64.snap
 sudo snap install --dangerous ./autopsy_4.21.0_amd64.snap
+sudo snap connections autopsy | sed -nE 's/^[^ ]* *([^ ]*) *- *- *$/\1/p' | xargs -I{} sudo snap connect {}
 sudo rm -rf autopsy_4.21.0_amd64.snap
 
 # Common Forensics Tools
