@@ -6,7 +6,7 @@ This repository contains a Bash script designed for automatically setting up a v
 tools essential for cybersecurity, open-source intelligence (OSINT), and digital forensics. The script is tailored for
 Ubuntu 22.04 and includes a range of tools from basic utilities to more specialized software for cyber investigations.
 
-![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/ryd3v)
+[![Twitter Follow](https://img.shields.io/twitter/follow/username.svg?style=social&label=ryd3v)](https://twitter.com/intent/follow?screen_name=ryd3v)
 
 ## Purpose
 
