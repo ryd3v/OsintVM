@@ -23,6 +23,8 @@ The script installs a variety of tools, including but not limited to:
 - **OSINT Tools**: Tools such as `theHarvester`, `Maltego` (manual installation required), and `sherlock`.
 - **Digital Forensics Tools**: Applications like `Autopsy`, `Sleuth Kit`, and various Python-based utilities.
 
+### Tools are installed in ``/opt/Tools``
+
 ## Installation
 
 1. Clone this repository or download the script to your Ubuntu 22.04 VM.
