@@ -399,4 +399,12 @@ sudo apt update --fix-missing
 sudo apt -y upgrade
 sudo apt autoremove -y
 
+if [ -n "$SUDO_USER" ]; then
+    sudo -u $SUDO_USER gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+else
+    echo "This script must be run with sudo."
+    exit 1
+fi
+
 echo "All tools installed. Please reboot."
+exit 0
