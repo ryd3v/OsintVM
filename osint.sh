@@ -6,7 +6,7 @@ sudo apt autoremove -y
 
 # Update and install basic tools
 sudo apt update
-sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses5-dev libffi-dev open-vm-tools
+sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses5-dev libffi-dev open-vm-tools gnome-tweaks
 
 # Install and configure specific tools
 sudo snap remove --purge firefox
