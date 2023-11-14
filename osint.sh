@@ -16,7 +16,7 @@ Package: *
 Pin: release o=LP-PPA-mozillateam
 Pin-Priority: 1001
 ' | sudo tee /etc/apt/preferences.d/mozilla-firefox
-sudo apt install -y firefox
+sudo apt install -y firefox --allow-downgrades
 sudo snap install chromium
 sudo pip install -U youtube-dl yt-dlp
 sudo apt install -y mediainfo-gui
