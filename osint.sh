@@ -176,14 +176,6 @@ git clone https://github.com/FortyNorthSecurity/EyeWitness.git .
 cd Python/setup
 sudo ./setup.sh
 
-# Geckodriver installation
-cd /opt/Tools
-wget https://github.com/mozilla/geckodriver/releases/download/v0.32.0/geckodriver-v0.32.0-linux-aarch64.tar.gz
-tar -xvzf geckodriver*
-chmod +x geckodriver
-sudo mv geckodriver /usr/local/bin
-sudo rm -rf geckodriver-v0.32.0-linux-aarch64.tar.gz
-
 # Amass installation
 sudo snap install amass
 
@@ -319,12 +311,6 @@ python3 -m venv recon-ngEnvironment
 source recon-ngEnvironment/bin/activate
 sudo pip install -r REQUIREMENTS 2>/dev/null
 deactivate
-
-# OpenAI Whisper
-sudo pip install -U openai-whisper
-mkdir /opt/Tools/whisper
-cd /opt/Tools/whisper
-wget https://openaipublic.azureedge.net/main/whisper/models/9ecf779972d90ba49c06d968637d720dd632c55bbf19d441fb42bf17a411e794/small.pt
 
 # InternetArchive
 mkdir /opt/Tools/internetarchive
