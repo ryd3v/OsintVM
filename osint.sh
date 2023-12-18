@@ -154,15 +154,6 @@ source maigretEnvironment/bin/activate
 pip install maigret
 deactivate
 
-# Email2phonenumber installation
-mkdir /opt/Tools/Email2phonenumber
-cd /opt/Tools/Email2phonenumber
-git clone https://github.com/martinvigo/email2phonenumber.git .
-python3 -m venv Email2phonenumberEnvironment
-source Email2phonenumberEnvironment/bin/activate
-pip install -r requirements.txt
-deactivate
-
 # Ghunt installation
 sudo pip install pipx
 pipx ensurepath
