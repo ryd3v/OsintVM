@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+# Update and upgrade
+sudo apt update && sudo apt upgrade -y
+
+# fix Git always asking for user credentials xD
+git config --global credential.helper store
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=600'
 
 # Remove unnecessary packages
 sudo apt purge -y apport apport-symptoms popularity-contest ubuntu-report whoopsie
@@ -6,7 +13,7 @@ sudo apt autoremove -y
 
 # Update and install basic tools
 sudo apt update
-sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses5-dev libffi-dev open-vm-tools gnome-tweaks transmission
+sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler recon-ng cherrytree instaloader sublist3r drawing
 
 # Install and configure specific tools
 sudo snap remove --purge firefox
@@ -24,7 +31,7 @@ sudo apt install -y libimage-exiftool-perl
 sudo apt install -y mat2
 sudo pip install testresources 2>/dev/null
 sudo pip install webscreenshot 2>/dev/null
-sudo apt install -y httrack webhttrack
+sudo apt install -y httrack
 sudo apt install -y libcanberra-gtk-module
 sudo apt install -y kazam
 sudo apt install bleachbit
@@ -36,6 +43,7 @@ echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debc
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 sudo apt install tor -y
 sudo apt install proxychains -y
+sudo snap install joplin-desktop
 
 # Environment setup for Node.js and other dependencies
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
@@ -48,6 +56,11 @@ nvm install --lts
 mkdir -p /opt/Tools
 sudo chown $USER:$USER /opt/Tools
 
+# OSINT Notebook
+mkdir /opt/Tools/OSINTnotebook
+cd /opt/Tools/OSINTnotebook
+git clone --recursive https://github.com/tjnull/TJ-OSINT-Notebook.git .
+
 # Streamlink installation
 mkdir /opt/Tools/Streamlink
 cd /opt/Tools/Streamlink
@@ -55,6 +68,28 @@ python3 -m venv streamlinkEnvironment
 source streamlinkEnvironment/bin/activate
 pip install streamlink
 deactivate
+
+# Dumpster Diver
+mkdir /opt/Tools/DumpsterDiver
+cd /opt/Tools/DumpsterDiver
+git clone --recursive https://github.com/securing/DumpsterDiver.git .
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# Infoga
+mkdir /opt/Tools/Infoga
+cd /opt/Tools/Infoga
+git clone --recursive https://github.com/m4ll0k/Infoga.git .
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# SpiderPig
+mkdir /opt/Tools/Spiderpig
+cd /opt/Tools/Spiderpig
+git clone --recursive https://github.com/hatlord/Spiderpig.git .
+bundle install
 
 # Instalooter installation
 mkdir /opt/Tools/Instalooter
