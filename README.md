@@ -8,6 +8,8 @@ Ubuntu 22.04 and includes a range of tools from basic utilities to more speciali
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/username.svg?style=social&label=ryd3v)](https://twitter.com/intent/follow?screen_name=ryd3v)
 
+![wallpaper](./wallpaper.jpeg)
+
 ## Purpose
 
 The primary goal of this script is to streamline the setup process for professionals and enthusiasts in the fields of
