@@ -44,6 +44,8 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 sudo apt install tor -y
 sudo apt install proxychains -y
 sudo snap install joplin-desktop
+sudo apt install fonts-roboto -y
+sudo apt install fonts-jetbrains-mono -y
 
 # Environment setup for Node.js and other dependencies
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
