@@ -434,6 +434,7 @@ flatpak install flathub com.belmoussaoui.Obfuscate -y
 sudo flatpak install flathub com.mattjakeman.ExtensionManager -y
 sudo flatpak install flathub org.gabmus.whatip -y
 sudo flatpak install flathub com.obsproject.Studio -y
+sudo flatpak install flathub io.exodus.Exodus -y
 
 echo "All tools installed. Please reboot."
 exit 0
