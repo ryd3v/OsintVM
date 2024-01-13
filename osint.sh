@@ -54,6 +54,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install --lts
 
+sudo apt install python3.11-venv -y
+
 # Create Tools directory in user's home
 mkdir -p /opt/Tools
 sudo chown $USER:$USER /opt/Tools
@@ -78,6 +80,7 @@ git clone --recursive https://github.com/securing/DumpsterDiver.git .
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+deactivate
 
 # Infoga
 mkdir /opt/Tools/Infoga
@@ -86,6 +89,7 @@ git clone --recursive https://github.com/m4ll0k/Infoga.git .
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+deactivate
 
 # SpiderPig
 mkdir /opt/Tools/Spiderpig
