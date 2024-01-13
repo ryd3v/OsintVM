@@ -422,12 +422,18 @@ sudo apt install flatpak -y
 sudo apt install gnome-software-plugin-flatpak -y
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-if [ -n "$SUDO_USER" ]; then
-    sudo -u $SUDO_USER gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-else
-    echo "This script must be run with sudo."
-    exit 1
-fi
+# Misc Flathubs
+sudo flatpak install flathub com.discordapp.Discord -y
+sudo flatpak install flathub io.github.bytezz.IPLookup -y
+flatpak install flathub org.gtkhash.gtkhash -y
+sudo flatpak install flathub org.mozilla.Thunderbird -y
+sudo flatpak install flathub md.obsidian.Obsidian -y
+sudo flatpak install flathub org.kde.tokodon -y
+sudo flatpak install flathub org.remmina.Remmina -y
+flatpak install flathub com.belmoussaoui.Obfuscate -y
+sudo flatpak install flathub com.mattjakeman.ExtensionManager -y
+sudo flatpak install flathub org.gabmus.whatip -y
+sudo flatpak install flathub com.obsproject.Studio -y
 
 echo "All tools installed. Please reboot."
 exit 0
