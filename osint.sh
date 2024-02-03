@@ -82,15 +82,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 deactivate
 
-# Infoga
-mkdir /opt/Tools/Infoga
-cd /opt/Tools/Infoga
-git clone --recursive https://github.com/m4ll0k/Infoga.git .
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-deactivate
-
 # SpiderPig
 mkdir /opt/Tools/Spiderpig
 cd /opt/Tools/Spiderpig
