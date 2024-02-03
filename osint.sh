@@ -63,7 +63,7 @@ sudo chown $USER:$USER /opt/Tools
 # OSINT Notebook
 mkdir /opt/Tools/OSINTnotebook
 cd /opt/Tools/OSINTnotebook
-git clone --recursive https://github.com/tjnull/TJ-OSINT-Notebook.git .
+git clone https://github.com/ryd3v/fork-of-TJ-OSINT-Notebook.git .
 
 # Streamlink installation
 mkdir /opt/Tools/Streamlink
