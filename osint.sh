@@ -304,9 +304,10 @@ deactivate
 # ChangeDetection
 mkdir /opt/Tools/changedetection
 cd /opt/Tools/changedetection
-python3 -m venv changedetectionEnvironment
-source changedetectionEnvironment/bin/activate
-sudo pip install changedetection.io 2>/dev/null
+git clone https://github.com/dgtlmoon/changedetection.io.git .
+python3 -m venv venv
+source venv/bin/activate
+sudo pip install -r requirements.txt --break-system-packages
 deactivate
 
 # ArchiveBox
