@@ -175,9 +175,9 @@ deactivate
 mkdir /opt/Tools/Blackbird
 cd /opt/Tools/Blackbird
 git clone https://github.com/p1ngul1n0/blackbird .
-python3 -m venv BlackbirdEnvironment
-source BlackbirdEnvironment/bin/activate
-pip install -r requirements.txt
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt --break-system-packages
 deactivate
 
 # Maigret installation
