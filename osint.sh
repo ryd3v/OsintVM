@@ -270,8 +270,9 @@ deactivate
 # BDFR
 mkdir /opt/Tools/bdfr
 cd /opt/Tools/bdfr
-python3 -m venv bdfrEnvironment
-source bdfrEnvironment/bin/activate
+git clone https://github.com/aliparlakci/bulk-downloader-for-reddit.git .
+python3 -m venv venv
+source venv/bin/activate
 sudo pip install -U bdfr 2>/dev/null
 deactivate
 
