@@ -8,7 +8,7 @@ Ubuntu 22.04 and includes a range of tools from basic utilities to more speciali
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/username.svg?style=social&label=ryd3v)](https://twitter.com/intent/follow?screen_name=ryd3v)
 
-![wallpaper](./wallpaper.jpeg)
+![wallpaper](./wallpaper-2.jpeg)
 
 ## Purpose
 
