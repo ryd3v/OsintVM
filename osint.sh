@@ -46,6 +46,8 @@ sudo apt install proxychains -y
 sudo snap install joplin-desktop
 sudo apt install fonts-roboto -y
 sudo apt install fonts-jetbrains-mono -y
+sudo apt install nikto -y
+sudo apt install netdiscover -y
 
 # Environment setup for Node.js and other dependencies
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
