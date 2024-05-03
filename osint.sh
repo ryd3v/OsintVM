@@ -1,11 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 # Update and upgrade
 sudo apt update && sudo apt upgrade -y
-
-# fix Git always asking for user credentials xD
-git config --global credential.helper store
-git config --global credential.helper cache
-git config --global credential.helper 'cache --timeout=600'
 
 # Remove unnecessary packages
 sudo apt purge -y apport apport-symptoms popularity-contest ubuntu-report whoopsie
@@ -15,22 +11,21 @@ sudo apt autoremove -y
 sudo apt update
 sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler recon-ng cherrytree drawing
 
+sudo apt install python3.12-venv -y
+
+# fix Git always asking for user credentials xD
+git config --global credential.helper store
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=600'
+
 # Install and configure specific tools
-sudo snap remove --purge firefox
-sudo add-apt-repository -y ppa:mozillateam/ppa
-echo '
-Package: *
-Pin: release o=LP-PPA-mozillateam
-Pin-Priority: 1001
-' | sudo tee /etc/apt/preferences.d/mozilla-firefox
-sudo apt install -y firefox --allow-downgrades
+sudo snap install code --classic
 sudo snap install chromium
-sudo pip install -U youtube-dl yt-dlp
+sudo snap install joplin-desktop
+
 sudo apt install -y mediainfo-gui
 sudo apt install -y libimage-exiftool-perl
 sudo apt install -y mat2
-sudo pip install testresources 2>/dev/null
-sudo pip install webscreenshot 2>/dev/null
 sudo apt install -y httrack
 sudo apt install -y libcanberra-gtk-module
 sudo apt install -y kazam
@@ -39,15 +34,21 @@ sudo apt install -y ripgrep
 sudo apt install yarn -y
 sudo apt install openvpn -y
 sudo apt install nmap -y
-echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 sudo apt install tor -y
 sudo apt install proxychains -y
-sudo snap install joplin-desktop
 sudo apt install fonts-roboto -y
 sudo apt install fonts-jetbrains-mono -y
 sudo apt install nikto -y
 sudo apt install netdiscover -y
+
+# Wireshark
+echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
+
+# pip packages
+sudo pip install -U youtube-dl yt-dlp
+sudo pip install testresources 2>/dev/null
+sudo pip install webscreenshot 2>/dev/null
 
 # Environment setup for Node.js and other dependencies
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
@@ -55,8 +56,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install --lts
-
-sudo apt install python3.11-venv -y
 
 # Create Tools directory in user's home
 mkdir -p /opt/Tools
@@ -374,6 +373,7 @@ mkdir /opt/Tools/DIE
 cd /opt/Tools/DIE
 wget https://github.com/horsicq/DIE-engine/releases/download/3.08/Detect_It_Easy-3.08-x86_64.AppImage
 
+# metasploit
 cd /opt/tools
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 ./msfconsole
@@ -381,10 +381,12 @@ cd /opt/Tools
 sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 sudo apt update -y
 
+# maltego
 wget https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.5.0.deb
 sudo apt install ./Maltego.v4.5.0.deb -y
 sudo rm -rf Maltego.v4.5.0.deb
 
+# misc dev tools
 cd /opt/Tools
 sudo apt -y install \
         openjdk-17-jdk openjdk-17-jre \
