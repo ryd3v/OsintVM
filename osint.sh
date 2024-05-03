@@ -8,7 +8,7 @@ sudo apt purge -y apport apport-symptoms popularity-contest ubuntu-report whoops
 sudo apt autoremove -y
 
 # Install basic tools
-sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler recon-ng cherrytree drawing
+sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler cherrytree drawing
 
 sudo apt install python3.12-venv -y
 
