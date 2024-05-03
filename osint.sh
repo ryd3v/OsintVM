@@ -1,18 +1,27 @@
 #!/bin/bash
 
+read -p "This script will install various tools, Press enter to continue or type 'quit' to stop: " input
+
+# Check if the user wants to quit
+if [ "$input" == "quit" ]; then
+  echo "You chose to stop the script."
+  exit 0
+fi
+
 # Update and upgrade
 sudo apt update && sudo apt upgrade -y
 
 # Remove unnecessary packages
 sudo apt purge -y apport apport-symptoms popularity-contest ubuntu-report whoopsie
 sudo apt autoremove -y
+sudo apt update && sudo apt upgrade -y
 
 # Install basic tools
 sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler cherrytree drawing
 
 sudo apt install python3.12-venv -y
 
-# fix Git always asking for user credentials xD
+# fix Git always asking for user credentials
 git config --global credential.helper store
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=600'
@@ -21,6 +30,7 @@ git config --global credential.helper 'cache --timeout=600'
 sudo snap install code --classic
 sudo snap install chromium
 sudo snap install joplin-desktop
+sudo snap install amass
 
 sudo apt install -y mediainfo-gui
 sudo apt install -y libimage-exiftool-perl
@@ -44,17 +54,15 @@ sudo apt install netdiscover -y
 echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 
-# pip packages
-sudo pip install -U youtube-dl yt-dlp
-sudo pip install testresources 2>/dev/null
-sudo pip install webscreenshot 2>/dev/null
-
 # Environment setup for Node.js and other dependencies
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install --lts
+
+sudo pip install setuptools wheel --break-system-packages
+sudo pip install --upgrade setuptools wheel --break-system-packages
 
 # Create Tools directory in user's home
 mkdir -p /opt/Tools
@@ -78,21 +86,6 @@ python3 -m venv streamlinkEnvironment
 source streamlinkEnvironment/bin/activate
 pip install streamlink
 deactivate
-
-# Dumpster Diver
-mkdir /opt/Tools/DumpsterDiver
-cd /opt/Tools/DumpsterDiver
-git clone --recursive https://github.com/securing/DumpsterDiver.git .
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-deactivate
-
-# SpiderPig
-mkdir /opt/Tools/Spiderpig
-cd /opt/Tools/Spiderpig
-git clone --recursive https://github.com/hatlord/Spiderpig.git .
-bundle install
 
 # Instalooter installation
 mkdir /opt/Tools/Instalooter
@@ -170,43 +163,6 @@ deactivate
 mkdir /opt/Tools/WhatsMyName
 cd /opt/Tools/WhatsMyName
 git clone https://github.com/WebBreacher/WhatsMyName.git .
-python3 -m venv WhatsMyNameEnvironment
-source WhatsMyNameEnvironment/bin/activate
-pip install -r requirements.txt
-deactivate
-
-# Blackbird installation
-mkdir /opt/Tools/Blackbird
-cd /opt/Tools/Blackbird
-git clone https://github.com/p1ngul1n0/blackbird .
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt --break-system-packages
-deactivate
-
-# Maigret installation
-mkdir /opt/Tools/Maigret
-cd /opt/Tools/Maigret
-python3 -m venv maigretEnvironment
-source maigretEnvironment/bin/activate
-pip install maigret
-deactivate
-
-# Ghunt installation
-sudo pip install pipx
-pipx ensurepath
-pipx install ghunt
-pipx ensurepath
-
-# EyeWitness installation
-mkdir /opt/Tools/EyeWitness
-cd /opt/Tools/EyeWitness
-git clone https://github.com/FortyNorthSecurity/EyeWitness.git .
-cd Python/setup
-sudo ./setup.sh
-
-# Amass installation
-sudo snap install amass
 
 # Sublist3r installation
 mkdir /opt/Tools/Sublist3r
@@ -232,15 +188,6 @@ cd /opt/Tools/TheHarvester
 git clone https://github.com/laramies/theHarvester.git .
 python3 -m venv TheHarvesterEnvironment
 source TheHarvesterEnvironment/bin/activate
-pip install -r requirements.txt
-deactivate
-
-# Carbon14 installation
-mkdir /opt/Tools/Carbon14
-cd /opt/Tools/Carbon14
-git clone https://github.com/Lazza/Carbon14 .
-python3 -m venv Carbon14Environment
-source Carbon14Environment/bin/activate
 pip install -r requirements.txt
 deactivate
 
@@ -271,21 +218,13 @@ source MetagoofilEnvironment/bin/activate
 pip install -r requirements.txt
 deactivate
 
-# BDFR
+# Bulk Download For Reddit
 mkdir /opt/Tools/bdfr
 cd /opt/Tools/bdfr
 git clone https://github.com/aliparlakci/bulk-downloader-for-reddit.git .
 python3 -m venv venv
 source venv/bin/activate
 sudo pip install -U bdfr 2>/dev/null
-deactivate
-
-# Redis Finder
-mkdir /opt/Tools/redditsfinder
-cd /opt/Tools/redditsfinder
-python3 -m venv redditsfinderEnvironment
-source redditsfinderEnvironment/bin/activate
-sudo pip install -U redditsfinder 2>/dev/null
 deactivate
 
 # Downloader for Reddit
@@ -296,34 +235,6 @@ python3 -m venv DownloaderForRedditEnvironment
 source DownloaderForRedditEnvironment/bin/activate
 sudo pip install -r requirements.txt 2>/dev/null
 deactivate
-
-# WayBackPy
-mkdir /opt/Tools/waybackpy
-cd /opt/Tools/waybackpy
-python3 -m venv waybackpyEnvironment
-source waybackpyEnvironment/bin/activate
-sudo pip install -U waybackpy 2>/dev/null
-deactivate
-
-# ChangeDetection
-mkdir /opt/Tools/changedetection
-cd /opt/Tools/changedetection
-git clone https://github.com/dgtlmoon/changedetection.io.git .
-python3 -m venv venv
-source venv/bin/activate
-sudo pip install -r requirements.txt --break-system-packages
-deactivate
-
-# ArchiveBox
-mkdir /opt/Tools/archivebox
-cd /opt/Tools/archivebox
-python3 -m venv archiveboxEnvironment
-source archiveboxEnvironment/bin/activate
-sudo pip install archivebox
-deactivate
-mkdir /opt/Tools/archivebox
-cd /opt/Tools/archivebox
-archivebox init
 
 # SpiderFoot
 cd /opt/Tools
@@ -343,43 +254,9 @@ source recon-ngEnvironment/bin/activate
 sudo pip install -r REQUIREMENTS 2>/dev/null
 deactivate
 
-# InternetArchive
-mkdir /opt/Tools/internetarchive
-cd /opt/Tools/internetarchive
-python3 -m venv internetarchiveEnvironment
-source internetarchiveEnvironment/bin/activate
-sudo pip install -U internetarchive 2>/dev/null
-deactivate
-
 # ElasticSearchCrawler
 cd /opt/Tools
 git clone https://github.com/AmIJesse/Elasticsearch-Crawler.git
-
-sudo pip install nested-lookup 2>/dev/null
-
-# Search that Hash
-mkdir /opt/Tools/search-that-hash
-cd /opt/Tools/search-that-hash
-python3 -m venv search-that-hashEnvironment
-source search-that-hashEnvironment/bin/activate
-sudo pip install -U search-that-hash 2>/dev/null
-deactivate
-
-# Name That Hash
-mkdir /opt/Tools/name-that-hash
-cd /opt/Tools/name-that-hash
-python3 -m venv name-that-hashEnvironment
-source name-that-hashEnvironment/bin/activate
-sudo pip install -U name-that-hash 2>/dev/null
-deactivate
-
-# metasploit
-cd /opt/tools
-curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
-./msfconsole
-cd /opt/Tools
-sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
-sudo apt update -y
 
 # maltego
 wget https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.5.0.deb
