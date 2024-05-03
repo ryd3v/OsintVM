@@ -60,6 +60,12 @@ nvm install --lts
 mkdir -p /opt/Tools
 sudo chown $USER:$USER /opt/Tools
 
+# Detect it easy
+mkdir /opt/Tools/DIE
+cd /opt/Tools/DIE
+wget https://github.com/horsicq/DIE-engine/releases/download/3.08/Detect_It_Easy-3.08-x86_64.AppImage
+sudo chmod +x Detect_It_Easy-3.08-x86_64.AppImage
+
 # OSINT Notebook
 mkdir /opt/Tools/OSINTnotebook
 cd /opt/Tools/OSINTnotebook
@@ -366,11 +372,6 @@ python3 -m venv name-that-hashEnvironment
 source name-that-hashEnvironment/bin/activate
 sudo pip install -U name-that-hash 2>/dev/null
 deactivate
-
-# Detect it easy
-mkdir /opt/Tools/DIE
-cd /opt/Tools/DIE
-wget https://github.com/horsicq/DIE-engine/releases/download/3.08/Detect_It_Easy-3.08-x86_64.AppImage
 
 # metasploit
 cd /opt/tools
