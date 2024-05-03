@@ -7,8 +7,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt purge -y apport apport-symptoms popularity-contest ubuntu-report whoopsie
 sudo apt autoremove -y
 
-# Update and install basic tools
-sudo apt update
+# Install basic tools
 sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler recon-ng cherrytree drawing
 
 sudo apt install python3.12-venv -y
