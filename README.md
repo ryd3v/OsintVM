@@ -4,11 +4,11 @@
 
 This repository contains a Bash script designed for automatically setting up a virtual machine (VM) with a suite of
 tools essential for cybersecurity, open-source intelligence (OSINT), and digital forensics. The script is tailored for
-Ubuntu 22.04 and includes a range of tools from basic utilities to more specialized software for cyber investigations.
+Ubuntu LTS and includes a range of tools from basic utilities to more specialized software for cyber investigations.
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/username.svg?style=social&label=ryd3v)](https://twitter.com/intent/follow?screen_name=ryd3v)
 
-![wallpaper](./wallpaper-2.jpeg)
+![wallpaper](./wallpapers/wallpaper-2.jpeg)
 
 ## Purpose
 
@@ -21,18 +21,18 @@ this script aims to reduce the manual effort required to install and configure t
 The script installs a variety of tools, including but not limited to:
 
 - **General Utilities**: Basic tools like `curl`, `wget`, and `git`.
-- **Cybersecurity Tools**: Software like `nmap`, `wireshark`, and `metasploit-framework`.
+- **Cybersecurity Tools**: Software like `nmap`, `wireshark`.
 - **OSINT Tools**: Tools such as `theHarvester`, `Maltego` (manual installation required), and `sherlock`.
 - **Digital Forensics Tools**: Applications like `Autopsy`, `Sleuth Kit`, and various Python-based utilities.
 
-### Tools are installed in ``/opt/Tools``
+### Tools are installed in `/opt/Tools`
 
 ## Installation
 
 1. Clone this repository or download the script to your Ubuntu 22.04 VM.
 2. Make the script executable:
    ```bash
-   chmod +x osint.sh
+   sudo chmod +x osint.sh
    ```
 3. Run the script with administrative privileges:
    ```bash
