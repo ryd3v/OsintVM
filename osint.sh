@@ -32,23 +32,7 @@ sudo snap install chromium
 sudo snap install joplin-desktop
 sudo snap install amass
 
-sudo apt install -y mediainfo-gui
-sudo apt install -y libimage-exiftool-perl
-sudo apt install -y mat2
-sudo apt install -y httrack
-sudo apt install -y libcanberra-gtk-module
-sudo apt install -y kazam
-sudo apt install bleachbit
-sudo apt install -y ripgrep
-sudo apt install yarn -y
-sudo apt install openvpn -y
-sudo apt install nmap -y
-sudo apt install tor -y
-sudo apt install proxychains -y
-sudo apt install fonts-roboto -y
-sudo apt install fonts-jetbrains-mono -y
-sudo apt install nikto -y
-sudo apt install netdiscover -y
+sudo apt install -y mediainfo-gui libimage-exiftool-perl mat2 httrack libcanberra-gtk-module kazam bleachbit ripgrep yarn openvpn nmap tor proxychains fonts-roboto fonts-jetbrains-mono nikto netdiscover
 
 # Wireshark
 echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
@@ -91,8 +75,8 @@ deactivate
 # Gallery-DL installation
 mkdir /opt/Tools/Gallery-DL
 cd /opt/Tools/Gallery-DL
-python3 -m venv gallerydlEnvironment
-source gallerydlEnvironment/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 pip install -U gallery-dl
 deactivate
 
