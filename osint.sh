@@ -113,8 +113,8 @@ git clone https://github.com/WebBreacher/WhatsMyName.git .
 mkdir /opt/Tools/Sublist3r
 cd /opt/Tools/Sublist3r
 git clone https://github.com/aboul3la/Sublist3r.git .
-python3 -m venv Sublist3rEnvironment
-source Sublist3rEnvironment/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 deactivate
 
