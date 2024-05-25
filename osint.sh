@@ -104,14 +104,6 @@ source venv/bin/activate
 pip install .
 deactivate
 
-# Holehe installation
-mkdir /opt/Tools/Holehe
-cd /opt/Tools/Holehe
-python3 -m venv holeheEnvironment
-source holeheEnvironment/bin/activate
-pip install -U holehe
-deactivate
-
 # WhatsMyName installation
 mkdir /opt/Tools/WhatsMyName
 cd /opt/Tools/WhatsMyName
