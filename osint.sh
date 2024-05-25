@@ -79,14 +79,6 @@ mkdir /opt/Tools/OSINTnotebook
 cd /opt/Tools/OSINTnotebook
 git clone https://github.com/ryd3v/fork-of-TJ-OSINT-Notebook.git .
 
-# Streamlink installation
-mkdir /opt/Tools/Streamlink
-cd /opt/Tools/Streamlink
-python3 -m venv streamlinkEnvironment
-source streamlinkEnvironment/bin/activate
-pip install streamlink
-deactivate
-
 # Osintgram installation
 mkdir /opt/Tools/Osintgram
 cd /opt/Tools/Osintgram
