@@ -53,17 +53,20 @@ mkdir -p /opt/Tools
 sudo chown $USER:$USER /opt/Tools
 
 # Detect it easy
+cd /opt/Tools
 mkdir /opt/Tools/DIE
 cd /opt/Tools/DIE
 wget https://github.com/horsicq/DIE-engine/releases/download/3.08/Detect_It_Easy-3.08-x86_64.AppImage
 sudo chmod +x Detect_It_Easy-3.08-x86_64.AppImage
 
 # OSINT Notebook
+cd /opt/Tools
 mkdir /opt/Tools/OSINTnotebook
 cd /opt/Tools/OSINTnotebook
 git clone https://github.com/ryd3v/fork-of-TJ-OSINT-Notebook.git .
 
 # Osintgram installation
+cd /opt/Tools
 mkdir /opt/Tools/Osintgram
 cd /opt/Tools/Osintgram
 git clone https://github.com/Datalux/Osintgram.git .
@@ -73,6 +76,7 @@ pip install -r requirements.txt
 deactivate
 
 # Gallery-DL installation
+cd /opt/Tools
 mkdir /opt/Tools/Gallery-DL
 cd /opt/Tools/Gallery-DL
 python3 -m venv venv
@@ -81,12 +85,14 @@ pip install -U gallery-dl
 deactivate
 
 # RipMe installation
+cd /opt/Tools
 mkdir /opt/Tools/RipMe
 cd /opt/Tools/RipMe
 wget https://github.com/ripmeapp/ripme/releases/latest/download/ripme.jar
 chmod +x ripme.jar
 
 # Sherlock installation
+cd /opt/Tools
 mkdir /opt/Tools/Sherlock
 cd /opt/Tools/Sherlock
 git clone https://github.com/sherlock-project/sherlock.git .
@@ -96,6 +102,7 @@ pip install -r requirements.txt
 deactivate
 
 # Socialscan installation
+cd /opt/Tools
 mkdir /opt/Tools/Socialscan
 cd /opt/Tools/Socialscan
 git clone https://github.com/iojw/socialscan.git .
@@ -105,11 +112,13 @@ pip install .
 deactivate
 
 # WhatsMyName installation
+cd /opt/Tools
 mkdir /opt/Tools/WhatsMyName
 cd /opt/Tools/WhatsMyName
 git clone https://github.com/WebBreacher/WhatsMyName.git .
 
 # Sublist3r installation
+cd /opt/Tools
 mkdir /opt/Tools/Sublist3r
 cd /opt/Tools/Sublist3r
 git clone https://github.com/aboul3la/Sublist3r.git .
@@ -119,6 +128,7 @@ pip install -r requirements.txt
 deactivate
 
 # Photon installation
+cd /opt/Tools
 mkdir /opt/Tools/Photon
 cd /opt/Tools/Photon
 git clone https://github.com/s0md3v/Photon.git .
@@ -128,38 +138,30 @@ pip install -r requirements.txt
 deactivate
 
 # TheHarvester installation
+cd /opt/Tools
 mkdir /opt/Tools/TheHarvester
 cd /opt/Tools/TheHarvester
 git clone https://github.com/laramies/theHarvester.git .
-python3 -m venv TheHarvesterEnvironment
-source TheHarvesterEnvironment/bin/activate
-pip install -r requirements.txt
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements/base.txt
 deactivate
 
 # Xeuledoc installation
+cd /opt/Tools
 mkdir /opt/Tools/Xeuledoc
 cd /opt/Tools/Xeuledoc
-python3 -m venv XeuledocEnvironment
-source XeuledocEnvironment/bin/activate
-pip install -U xeuledoc
-deactivate
-
-# Sherloq installation
-mkdir /opt/Tools/Sherloq
-cd /opt/Tools/Sherloq
-git clone https://github.com/GuidoBartoli/sherloq.git gui
-cd gui
-python3 -m venv SherloqEnvironment
-source SherloqEnvironment/bin/activate
-pip install -r requirements.txt
-deactivate
+git clone https://github.com/Malfrats/xeuledoc.git .
+python3 setup.py install
 
 # Metagoofil installation
+cd /opt/Tools
 mkdir /opt/Tools/Metagoofil
 cd /opt/Tools/Metagoofil
-git clone https://github.com/opsdisk/metagoofil.git .
-python3 -m venv MetagoofilEnvironment
-source MetagoofilEnvironment/bin/activate
+git clone https://github.com/opsdisk/metagoofil .
+cd metagoofil
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 deactivate
 
@@ -169,39 +171,41 @@ cd /opt/Tools/bdfr
 git clone https://github.com/aliparlakci/bulk-downloader-for-reddit.git .
 python3 -m venv venv
 source venv/bin/activate
-sudo pip install -U bdfr 2>/dev/null
+python3 -m pip install bdfr --upgrade
 deactivate
 
 # Downloader for Reddit
 cd /opt/Tools
-git clone https://github.com/MalloyDelacroix/DownloaderForReddit.git
+mkdir DownloaderForReddit
 cd /opt/Tools/DownloaderForReddit
-python3 -m venv DownloaderForRedditEnvironment
-source DownloaderForRedditEnvironment/bin/activate
-sudo pip install -r requirements.txt 2>/dev/null
-deactivate
+wget https://github.com/MalloyDelacroix/DownloaderForReddit/releases/download/v3.16.0/DownloaderForReddit_v3.16.0.zip
 
 # SpiderFoot
 cd /opt/Tools
-git clone https://github.com/smicallef/spiderfoot.git
+mkdir /opt/Tools/spiderfoot
 cd /opt/Tools/spiderfoot
-python3 -m venv spiderfootEnvironment
-source spiderfootEnvironment/bin/activate
-sudo pip install -r requirements.txt 2>/dev/null
+wget https://github.com/smicallef/spiderfoot/archive/v4.0.tar.gz
+tar zxvf v4.0.tar.gz
+cd spiderfoot-4.0
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 deactivate
 
 # ReconNG
 cd /opt/Tools
-git clone https://github.com/lanmaster53/recon-ng.git
-cd /opt/Tools/recon-ng
-python3 -m venv recon-ngEnvironment
-source recon-ngEnvironment/bin/activate
-sudo pip install -r REQUIREMENTS 2>/dev/null
+mkdir /opt/Tools/recon-ng
+/opt/Tools/recon-ng
+python3 -m venv venv
+source venv/bin/activate
+pip install -r REQUIREMENTS
 deactivate
 
 # ElasticSearchCrawler
 cd /opt/Tools
-git clone https://github.com/AmIJesse/Elasticsearch-Crawler.git
+mkdir /opt/Tools/Elasticsearch-Crawler
+cd /opt/Tools/Elasticsearch-Crawler
+git clone https://github.com/AmIJesse/Elasticsearch-Crawler.git .
 
 # maltego
 wget https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.5.0.deb
