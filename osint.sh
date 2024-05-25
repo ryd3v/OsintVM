@@ -87,30 +87,6 @@ source streamlinkEnvironment/bin/activate
 pip install streamlink
 deactivate
 
-# Instalooter installation
-mkdir /opt/Tools/Instalooter
-cd /opt/Tools/Instalooter
-python3 -m venv instalooterEnvironment
-source instalooterEnvironment/bin/activate
-pip install instalooter
-deactivate
-
-# Instaloader installation
-mkdir /opt/Tools/Instaloader
-cd /opt/Tools/Instaloader
-python3 -m venv instaloaderEnvironment
-source instaloaderEnvironment/bin/activate
-pip install instaloader
-deactivate
-
-# Toutatis installation
-mkdir /opt/Tools/Toutatis
-cd /opt/Tools/Toutatis
-python3 -m venv toutatisEnvironment
-source toutatisEnvironment/bin/activate
-pip install toutatis
-deactivate
-
 # Osintgram installation
 mkdir /opt/Tools/Osintgram
 cd /opt/Tools/Osintgram
