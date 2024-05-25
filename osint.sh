@@ -114,9 +114,10 @@ deactivate
 # Socialscan installation
 mkdir /opt/Tools/Socialscan
 cd /opt/Tools/Socialscan
-python3 -m venv socialscanEnvironment
-source socialscanEnvironment/bin/activate
-pip install -U socialscan
+git clone https://github.com/iojw/socialscan.git .
+python3 -m venv venv
+source venv/bin/activate
+pip install .
 deactivate
 
 # Holehe installation
