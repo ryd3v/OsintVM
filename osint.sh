@@ -19,7 +19,7 @@ sudo apt update && sudo apt upgrade -y
 # Install basic tools
 sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler cherrytree drawing
 
-sudo apt install python3.12-venv -y
+sudo apt install python3.11 python3.11-dev python3.11-venv -y
 
 # fix Git always asking for user credentials
 git config --global credential.helper store
