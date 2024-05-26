@@ -19,7 +19,29 @@ sudo apt update && sudo apt upgrade -y
 # Install basic tools
 sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler cherrytree drawing
 
-sudo apt install python3.12-venv -y
+# Function to install the venv module for a specific Python version
+install_venv() {
+    local version=$1
+    if command -v python$version &> /dev/null; then
+        echo "Installing python$version-venv..."
+        sudo apt install python$version-venv -y
+        if [ $? -eq 0 ]; then
+            echo "Successfully installed python$version-venv"
+        else
+            echo "Failed to install python$version-venv"
+        fi
+    else
+        echo "Python $version is not installed."
+    fi
+}
+
+# List of Python versions to check
+versions=("3.10" "3.11" "3.12")
+
+# Iterate over the list and install venv if the version is installed
+for version in "${versions[@]}"; do
+    install_venv $version
+done
 
 # fix Git always asking for user credentials
 git config --global credential.helper store

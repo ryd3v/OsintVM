@@ -6,15 +6,15 @@ This repository contains a Bash script designed for automatically setting up a v
 tools essential for cybersecurity, open-source intelligence (OSINT), and digital forensics. The script is tailored for
 Ubuntu LTS and includes a range of tools from basic utilities to more specialized software for cyber investigations.
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/username.svg?style=social&label=ryd3v)](https://twitter.com/intent/follow?screen_name=ryd3v)
+## Hyper-V
 
-![wallpaper](./wallpapers/wallpaper-2.jpeg)
+If you are using Hyper-V, before running this install script, you can run my ubuntu-vm-tools script to configure your vm properly for hyper-v. Please see [ubuntu-vm-tools](https://github.com/ryd3v/ubuntu-vm-tools)
 
 ## Purpose
 
 The primary goal of this script is to streamline the setup process for professionals and enthusiasts in the fields of
 cybersecurity and digital forensics. Whether you're setting up a new VM for testing, training, or actual investigations,
-this script aims to reduce the manual effort required to install and configure the necessary tools.
+this script aims to reduce the manual effort required to install and configure the necessary tools. This was designed for the latest version of Ubuntu, but it should work on any Debain based distro. For example I use [Ubuntu Server 24.04 LTS](https://ubuntu.com/download/server) as my base when using Hyper-V.
 
 ## Tools Included
 
@@ -62,3 +62,5 @@ Ensure you have the proper authorization before using these tools in any testing
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/username.svg?style=social&label=ryd3v)](https://twitter.com/intent/follow?screen_name=ryd3v)
