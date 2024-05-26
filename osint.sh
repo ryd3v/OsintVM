@@ -217,7 +217,8 @@ deactivate
 # ReconNG
 cd /opt/Tools
 mkdir /opt/Tools/recon-ng
-/opt/Tools/recon-ng
+cd /opt/Tools/recon-ng
+git clone https://github.com/lanmaster53/recon-ng.git .
 python3 -m venv venv
 source venv/bin/activate
 pip install -r REQUIREMENTS
