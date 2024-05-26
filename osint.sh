@@ -181,7 +181,6 @@ cd /opt/Tools
 mkdir /opt/Tools/Metagoofil
 cd /opt/Tools/Metagoofil
 git clone https://github.com/opsdisk/metagoofil .
-cd metagoofil
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
