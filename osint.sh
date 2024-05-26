@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "This script will install various tools, Press enter to continue or type 'quit' to stop: " input
+read -r -p "This script will install various tools, Press enter to continue or type 'quit' to stop: " input
 
 # Check if the user wants to quit
 if [ "$input" == "quit" ]; then
@@ -22,9 +22,9 @@ sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg pyth
 # Function to install the venv module for a specific Python version
 install_venv() {
     local version=$1
-    if command -v python$version &> /dev/null; then
+    if command -v python"$version" &> /dev/null; then
         echo "Installing python$version-venv..."
-        sudo apt install python$version-venv -y
+        sudo apt install python"$version"-venv -y
         if [ $? -eq 0 ]; then
             echo "Successfully installed python$version-venv"
         else
@@ -40,7 +40,7 @@ versions=("3.10" "3.11" "3.12")
 
 # Iterate over the list and install venv if the version is installed
 for version in "${versions[@]}"; do
-    install_venv $version
+    install_venv "$version"
 done
 
 # fix Git always asking for user credentials
@@ -63,7 +63,9 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 # Environment setup for Node.js and other dependencies
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
+# shellcheck disable=SC1091
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# shellcheck disable=SC1091
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install --lts
 
@@ -72,61 +74,89 @@ sudo pip install --upgrade setuptools wheel --break-system-packages
 
 # Create Tools directory in user's home
 mkdir -p /opt/Tools
-sudo chown $USER:$USER /opt/Tools
+sudo chown "$USER":"$USER" /opt/Tools
 
 # Detect it easy
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/DIE
-cd /opt/Tools/DIE
+cd /opt/Tools/DIE || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 wget https://github.com/horsicq/DIE-engine/releases/download/3.08/Detect_It_Easy-3.08-x86_64.AppImage
 sudo chmod +x Detect_It_Easy-3.08-x86_64.AppImage
 
 # OSINT Notebook
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/OSINTnotebook
-cd /opt/Tools/OSINTnotebook
+cd /opt/Tools/OSINTnotebook || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/ryd3v/fork-of-TJ-OSINT-Notebook.git .
 
 # Osintgram installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Osintgram
-cd /opt/Tools/Osintgram
+cd /opt/Tools/Osintgram || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/Datalux/Osintgram.git .
-python3 -m venv OsintgramEnvironment
-source OsintgramEnvironment/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 deactivate
 
 # Gallery-DL installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Gallery-DL
-cd /opt/Tools/Gallery-DL
+cd /opt/Tools/Gallery-DL || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 python3 -m venv venv
 source venv/bin/activate
 pip install -U gallery-dl
 deactivate
 
 # RipMe installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/RipMe
-cd /opt/Tools/RipMe
+cd /opt/Tools/RipMe || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 wget https://github.com/ripmeapp/ripme/releases/latest/download/ripme.jar
 chmod +x ripme.jar
 
 # Sherlock installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Sherlock
-cd /opt/Tools/Sherlock
+cd /opt/Tools/Sherlock || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/sherlock-project/sherlock.git .
-python3 -m venv SherlockEnvironment
-source SherlockEnvironment/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 deactivate
 
 # Socialscan installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Socialscan
-cd /opt/Tools/Socialscan
+cd /opt/Tools/Socialscan || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/iojw/socialscan.git .
 python3 -m venv venv
 source venv/bin/activate
@@ -134,15 +164,23 @@ pip install .
 deactivate
 
 # WhatsMyName installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/WhatsMyName
-cd /opt/Tools/WhatsMyName
+cd /opt/Tools/WhatsMyName || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/WebBreacher/WhatsMyName.git .
 
 # Sublist3r installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Sublist3r
-cd /opt/Tools/Sublist3r
+cd /opt/Tools/Sublist3r || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/aboul3la/Sublist3r.git .
 python3 -m venv venv
 source venv/bin/activate
@@ -150,9 +188,13 @@ pip install -r requirements.txt
 deactivate
 
 # Photon installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Photon
-cd /opt/Tools/Photon
+cd /opt/Tools/Photon || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/s0md3v/Photon.git .
 python3 -m venv PhotonEnvironment
 source PhotonEnvironment/bin/activate
@@ -160,9 +202,13 @@ pip install -r requirements.txt
 deactivate
 
 # TheHarvester installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/TheHarvester
-cd /opt/Tools/TheHarvester
+cd /opt/Tools/TheHarvester || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/laramies/theHarvester.git .
 python3 -m venv venv
 source venv/bin/activate
@@ -170,16 +216,24 @@ pip install -r requirements/base.txt
 deactivate
 
 # Xeuledoc installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Xeuledoc
-cd /opt/Tools/Xeuledoc
+cd /opt/Tools/Xeuledoc || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/Malfrats/xeuledoc.git .
 python3 setup.py install
 
 # Metagoofil installation
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Metagoofil
-cd /opt/Tools/Metagoofil
+cd /opt/Tools/Metagoofil || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/opsdisk/metagoofil .
 python3 -m venv venv
 source venv/bin/activate
@@ -188,7 +242,9 @@ deactivate
 
 # Bulk Download For Reddit
 mkdir /opt/Tools/bdfr
-cd /opt/Tools/bdfr
+cd /opt/Tools/bdfr || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/aliparlakci/bulk-downloader-for-reddit.git .
 python3 -m venv venv
 source venv/bin/activate
@@ -196,27 +252,41 @@ python3 -m pip install bdfr --upgrade
 deactivate
 
 # Downloader for Reddit
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir DownloaderForReddit
-cd /opt/Tools/DownloaderForReddit
+cd /opt/Tools/DownloaderForReddit || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 wget https://github.com/MalloyDelacroix/DownloaderForReddit/releases/download/v3.16.0/DownloaderForReddit_v3.16.0.zip
 
 # SpiderFoot
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/spiderfoot
-cd /opt/Tools/spiderfoot
+cd /opt/Tools/spiderfoot || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 wget https://github.com/smicallef/spiderfoot/archive/v4.0.tar.gz
 tar zxvf v4.0.tar.gz
-cd spiderfoot-4.0
+cd spiderfoot-4.0 || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 deactivate
 
 # ReconNG
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/recon-ng
-cd /opt/Tools/recon-ng
+cd /opt/Tools/recon-ng || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/lanmaster53/recon-ng.git .
 python3 -m venv venv
 source venv/bin/activate
@@ -224,9 +294,13 @@ pip install -r REQUIREMENTS
 deactivate
 
 # ElasticSearchCrawler
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 mkdir /opt/Tools/Elasticsearch-Crawler
-cd /opt/Tools/Elasticsearch-Crawler
+cd /opt/Tools/Elasticsearch-Crawler || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 git clone https://github.com/AmIJesse/Elasticsearch-Crawler.git .
 
 # maltego
@@ -235,7 +309,9 @@ sudo apt install ./Maltego.v4.5.0.deb -y
 sudo rm -rf Maltego.v4.5.0.deb
 
 # misc dev tools
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 sudo apt -y install \
         openjdk-17-jdk openjdk-17-jre \
         build-essential autoconf libtool automake git zip wget ant \
@@ -247,7 +323,9 @@ sudo apt -y install \
         gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 
 # Autopsy
-cd /opt/Tools
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
 sudo wget https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.21.0/autopsy_4.21.0_amd64.snap
 sudo snap install --dangerous ./autopsy_4.21.0_amd64.snap
 sudo snap connections autopsy | sed -nE 's/^[^ ]* *([^ ]*) *- *- *$/\1/p' | xargs -I{} sudo snap connect {}
