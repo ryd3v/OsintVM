@@ -97,20 +97,6 @@ cd /opt/Tools/OSINTnotebook || {
 }
 git clone https://github.com/ryd3v/fork-of-TJ-OSINT-Notebook.git .
 
-# Osintgram installation
-cd /opt/Tools || {
-    echo "Failed to change directory. Continuing with the script..."
-}
-mkdir /opt/Tools/Osintgram
-cd /opt/Tools/Osintgram || {
-    echo "Failed to change directory. Continuing with the script..."
-}
-git clone https://github.com/Datalux/Osintgram.git .
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-deactivate
-
 # Gallery-DL installation
 cd /opt/Tools || {
     echo "Failed to change directory. Continuing with the script..."
