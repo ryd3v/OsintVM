@@ -247,24 +247,6 @@ cd /opt/Tools/DownloaderForReddit || {
 }
 wget https://github.com/MalloyDelacroix/DownloaderForReddit/releases/download/v3.16.0/DownloaderForReddit_v3.16.0.zip
 
-# SpiderFoot
-cd /opt/Tools || {
-    echo "Failed to change directory. Continuing with the script..."
-}
-mkdir /opt/Tools/spiderfoot
-cd /opt/Tools/spiderfoot || {
-    echo "Failed to change directory. Continuing with the script..."
-}
-wget https://github.com/smicallef/spiderfoot/archive/v4.0.tar.gz
-tar zxvf v4.0.tar.gz
-cd spiderfoot-4.0 || {
-    echo "Failed to change directory. Continuing with the script..."
-}
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-deactivate
-
 # ReconNG
 cd /opt/Tools || {
     echo "Failed to change directory. Continuing with the script..."
