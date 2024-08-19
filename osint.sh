@@ -52,12 +52,6 @@ git config --global credential.helper store
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=600'
 
-# Install and configure specific tools
-sudo snap install code --classic
-sudo snap install chromium
-sudo snap install joplin-desktop
-sudo snap install amass
-
 sudo apt install -y mediainfo-gui libimage-exiftool-perl mat2 httrack libcanberra-gtk-module kazam bleachbit ripgrep yarn openvpn nmap tor proxychains fonts-roboto fonts-jetbrains-mono nikto netdiscover
 
 # Wireshark
@@ -305,6 +299,11 @@ else
     echo "This is not Debian, no action taken."
 fi
 
+# Install and configure specific tools
+sudo snap install chromium
+sudo snap install joplin-desktop
+sudo snap install amass
+
 # Autopsy
 cd /opt/Tools || {
     echo "Failed to change directory. Continuing with the script..."
@@ -315,7 +314,7 @@ sudo snap connections autopsy | sed -nE 's/^[^ ]* *([^ ]*) *- *- *$/\1/p' | xarg
 sudo rm -rf autopsy_4.21.0_amd64.snap
 
 # Common Forensics Tools
-sudo apt install forensics-all -y
+sudo apt install forensics-full -y
 
 # Miscellaneous setup
 sudo apt --fix-broken install
