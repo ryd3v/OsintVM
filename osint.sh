@@ -270,7 +270,7 @@ cd /opt/Tools/blackbird || {
 git clone https://github.com/p1ngul1n0/blackbird.git .
 python3 -m venv venv
 source venv/bin/activate
-pip install -r REQUIREMENTS
+pip install -r requirements.txt
 deactivate
 
 # ElasticSearchCrawler
