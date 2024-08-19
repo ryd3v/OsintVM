@@ -259,25 +259,37 @@ source venv/bin/activate
 pip install -r REQUIREMENTS
 deactivate
 
+# Blackbird
+cd /opt/Tools || {
+    echo "Failed to change directory. Continuing with the script..."
+}
+mkdir /opt/Tools/blackbird
+cd /opt/Tools/blackbird || {
+    echo "Failed to change directory. Continuing with the script..."
+}
+git clone https://github.com/p1ngul1n0/blackbird.git .
+python3 -m venv venv
+source venv/bin/activate
+pip install -r REQUIREMENTS
+deactivate
+
 # ElasticSearchCrawler
 cd /opt/Tools || {
     echo "Failed to change directory. Continuing with the script..."
 }
 mkdir /opt/Tools/Elasticsearch-Crawler
-cd /opt/Tools/Elasticsearch-Crawler || {
-    echo "Failed to change directory. Continuing with the script..."
-}
 git clone https://github.com/AmIJesse/Elasticsearch-Crawler.git .
+
+# misc dev tools
+cd || {
+    echo "All tools installed. Continuing with the script..."
+}
 
 # maltego
 wget https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.5.0.deb
 sudo apt install ./Maltego.v4.5.0.deb -y
 sudo rm -rf Maltego.v4.5.0.deb
 
-# misc dev tools
-cd /opt/Tools || {
-    echo "Failed to change directory. Continuing with the script..."
-}
 sudo apt -y install \
         openjdk-17-jdk openjdk-17-jre \
         build-essential autoconf libtool automake git zip wget ant \
@@ -341,5 +353,5 @@ sudo flatpak install flathub org.gabmus.whatip -y
 sudo flatpak install flathub com.obsproject.Studio -y
 sudo flatpak install flathub io.exodus.Exodus -y
 
-echo "All tools installed. Please reboot."
+echo "All tools installed. Don't forget to 'sudo chown -R user:user /opt' Please reboot."
 exit 0
