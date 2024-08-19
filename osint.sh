@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -r -p "This script will install various tools, Press enter to continue or type 'quit' to stop: " input
+read -r -p "This script will install various tools for OSINT and Forensics, Press enter to continue or type 'quit' to stop: " input
 
 # Check if the user wants to quit
 if [ "$input" == "quit" ]; then
@@ -18,6 +18,10 @@ sudo apt update && sudo apt upgrade -y
 
 # Install basic tools
 sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler cherrytree drawing
+
+# Remove games
+sudo apt-get remove gnome-games kdegames kdeedu khangman
+sudo apt autoremove
 
 # Function to install the venv module for a specific Python version
 install_venv() {
@@ -289,6 +293,17 @@ sudo apt -y install \
         libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
         gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x \
         gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+
+# Check if the system is Debian
+if grep -qi "debian" /etc/os-release && ! grep -qi "ubuntu" /etc/os-release; then
+    echo "This is Debian."
+    # Install snapd
+    sudo apt update
+    sudo apt install -y snapd
+    sudo snap install snapd
+else
+    echo "This is not Debian, no action taken."
+fi
 
 # Autopsy
 cd /opt/Tools || {
