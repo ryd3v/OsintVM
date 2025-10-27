@@ -19,6 +19,15 @@ sudo apt update && sudo apt upgrade -y
 # Install basic tools
 sudo apt install -y build-essential dkms gcc make perl curl wget vlc ffmpeg python3-pip git default-jre mediainfo-gui libimage-exiftool-perl mat2 subversion ripgrep jq libncurses-dev libffi-dev open-vm-tools gnome-tweaks transmission python3-shodan webhttrack outguess stegosuite exifprobe ruby-bundler cherrytree drawing
 
+# ESSENTIAL_PACKAGES
+sudo apt install -y curl wget openssl ca-certificates coreutils findutils grep procps psmisc systemd sudo dmidecode lsof acl util-linux mount uuid-runtime inotify-tools ntpsec isc-dhcp-client pass pwgen xkcdpass
+
+# NETWORK_PACKAGES
+sudo apt install -y tor torsocks obfs4proxy openvpn wireguard-tools iptables nftables arptables ebtables iproute2 iputils-ping net-tools nyx apt-transport-tor shadowsocks-libev redsocks microsocks haproxy
+
+#SECURITY_PACKAGES
+sudo apt install -y ufw macchanger firejail apparmor apparmor-utils apparmor-profiles aide lynis rkhunter chkrootkit usbguard ecryptfs-utils cryptsetup-nuke-password fail2ban unattended-upgrades auditd libpam-pwquality libpam-google-authenticator secure-delete wipe nwipe dnsutils
+
 # Remove games
 sudo apt-get remove gnome-games kdegames kdeedu khangman
 sudo apt autoremove
